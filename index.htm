@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>モダンレスポンシブデザイン サンプル</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="header">
+    <div id="hamburger">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <nav id="menu">
+      <ul>
+        <li><a href="#">ホーム</a></li>
+        <li><a href="#">サービス</a></li>
+        <li><a href="#">会社概要</a></li>
+        <li><a href="#">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>モダンレスポンシブデザイン</h1>
+      <p>1350px以下ではスーッと縮小。スマホでは自然に文字も縮みます。</p>
+    </section>
+
+    <section class="content">
+      <h2>サンプル本文</h2>
+      <p>
+        このページは、最新のレスポンシブ設計を体験できるデモページです。  
+        PCではフルサイズ、画面を縮めると文字やレイアウトがスムーズに変化します。  
+        スマホサイズでは、フォントサイズが自動で画面幅に合わせて調整されます。
+      </p>
+    </section>
+  </main>
+
+  <div id="mask"></div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $('#hamburger').on('click', function () {
+      $('body').toggleClass('open');
+    });
+    $('#mask, #menu a').on('click', function () {
+      $('body').removeClass('open');
+    });
+  </script>
+</body>
+</html>

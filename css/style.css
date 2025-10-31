@@ -1,0 +1,195 @@
+/* =========================
+   基本レイアウト
+========================= */
+html {
+  font-size: 10px;
+  height: 100%;
+}
+body {
+  font-family: "游ゴシック体", "Yu Gothic", sans-serif;
+  margin: 0;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* =========================
+   ヘッダー＆メニュー
+========================= */
+#header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 60px;
+  background: #137180;
+  z-index: 1000;
+}
+
+#menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100%;
+  background: #fff;
+  transition: right 0.6s cubic-bezier(.19,1,.22,1);
+  padding-top: 80px;
+}
+#menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#menu li {
+  margin: 1.5em 0;
+  text-align: center;
+}
+#menu a {
+  color: #137180;
+  font-size: 1.8rem;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+#menu a:hover {
+  opacity: 0.6;
+}
+
+/* =========================
+   ハンバーガーメニュー（通常タイプ）
+========================= */
+#hamburger {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #137180;
+  z-index: 1200;
+}
+
+/* 各バー（三本線） */
+#hamburger .icon-bar {
+  display: block;
+  width: 30px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  position: relative;
+  transition: all 0.4s ease-in-out;
+}
+
+/* 三本線の間隔 */
+#hamburger .icon-bar:nth-child(1) {
+  transform: translateY(-8px);
+}
+#hamburger .icon-bar:nth-child(3) {
+  transform: translateY(8px);
+}
+
+/* ✕ 変形アニメーション */
+body.open #hamburger .icon-bar:nth-child(1) {
+  transform: rotate(45deg);
+}
+body.open #hamburger .icon-bar:nth-child(2) {
+  opacity: 0;
+}
+body.open #hamburger .icon-bar:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* 背景色切替（開いたとき） */
+body.open #hamburger {
+  background: #fff;
+}
+body.open #hamburger .icon-bar {
+  background: #00a3d2;
+}
+
+/* =========================
+   背景マスク
+========================= */
+#mask {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s;
+}
+body.open #mask {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =========================
+   コンテンツ
+========================= */
+.hero {
+  height: 100vh;
+  background: linear-gradient(135deg, #00a3d2, #137180);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 3rem;
+}
+.hero p {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+}
+
+.content {
+  padding: 5rem 10%;
+}
+.content h2 {
+  font-size: 2.2rem;
+  color: #137180;
+  margin-bottom: 1rem;
+}
+.content p {
+  font-size: 1.6rem;
+  line-height: 1.8;
+}
+
+/* =========================
+   アニメーション時の状態
+========================= */
+body.open #menu {
+  right: 0;
+}
+body.open {
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+/* =========================
+   レスポンシブ設定
+========================= */
+
+/* 1350px以下で全体スケール縮小 */
+@media only screen and (max-width: 1350px) {
+  html {
+    font-size: 0.7407vw;
+  }
+}
+
+/* スマホ時（768px以下） */
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 2.6667vw;
+  }
+  #menu {
+    width: 100%;
+  }
+}
